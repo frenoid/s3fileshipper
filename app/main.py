@@ -47,7 +47,7 @@ def main():
                 logging.info("Uploading file {}/{}".format(path, filename))
                 response = s3_client.upload_file("{}/{}".format(path, filename),
                                                 S3_BUCKET,
-                                                "{}/{}".format(S3_KEY_PREFIX, filename))
+                                                "{}{}/{}".format(S3_KEY_PREFIX, path ,filename))
                 logging.info(response)
 
 if __name__ == "__main__":
