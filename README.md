@@ -13,6 +13,8 @@ Install requirements <br>
 Set a recursive watch path - s3fileshipper watches this path
 `export RECURSIVE_WATCH_PATH=/tmp`
 
+Be sure to set your AWS credentials in ENV. See [Environment variables to configure the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
+
 Run the app <br>
 `python3 app/main.py`
 
@@ -26,6 +28,8 @@ Run the image in detached mode <br>
 Observe the logs <br>
 `docker logs fileshipper`
 
+# How it works
+iNotify listens for IN_CLOSE_WRITE events and excludes directory events. When the event occurs, it uploads the files to S3. If you update the file, the file in S3 will be overwritten.
 
 # Incompatibilites
 iNotify is incompatible with macOS
